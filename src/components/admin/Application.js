@@ -9,11 +9,11 @@ export default function Application() {
                     <div className="lg:w-1/4 w-full mt-5 rounded-lg overflow-hidden">
                         <div className="flex mt-2">
                             <div className="h-full bg-white text-left px-4 py-4 w-full justify-end">
-                                <a to="jobdet" className="flex items-center flex-wrap">
+                               <p to="jobdet" className="flex items-center flex-wrap">
 
                                     <span className="font-bold text-lg text-gray-800">Application(ID)</span>
                                    
-                                </a>
+                               </p>
                                 <div className="flex items-center flex-wrap ">
                                     Casual Leave
                                  
@@ -28,11 +28,11 @@ export default function Application() {
                         </div>
                         <div className="flex mt-2">
                             <div className="h-full bg-white text-left px-4 py-4 w-full justify-end">
-                                <a to="jobdet" className="flex items-center flex-wrap">
+                               <p to="jobdet" className="flex items-center flex-wrap">
 
                                     <span className="font-bold text-lg text-gray-800">Application(ID)</span>
                                    
-                                </a>
+                               </p>
                                 <div className="flex items-center flex-wrap ">
                                     Casual Leave
                                  
@@ -47,11 +47,11 @@ export default function Application() {
                         </div>
                         <div className="flex mt-2">
                             <div className="h-full bg-white text-left px-4 py-4 w-full justify-end">
-                                <a to="jobdet" className="flex items-center flex-wrap">
+                               <p to="jobdet" className="flex items-center flex-wrap">
 
                                     <span className="font-bold text-lg text-gray-800">Application(ID)</span>
                                    
-                                </a>
+                               </p>
                                 <div className="flex items-center flex-wrap ">
                                     Casual Leave
                                  

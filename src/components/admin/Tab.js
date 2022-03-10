@@ -23,7 +23,7 @@ const Tab = () => {
             </div>
             <div className="xl:w-full xl:px-12 h-12 hidden sm:block bg-white shadow rounded">
                 <ul className="flex border-b px-5">
-                    <li onClick={() => setActiveStatus(1)} className={activeStatus == 1 ? "text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12" : "text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer"}>
+                    <li onClick={() => setActiveStatus(1)} className={activeStatus === 1 ? "text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12" : "text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer"}>
                         <div className="flex items-center mb-3">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-home" width={16} height={16} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
