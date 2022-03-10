@@ -1,9 +1,13 @@
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/employee/Login";
+import Register from "./components/employee/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DashEmployee from "./components/Dashemployee";
-import Applyleave from "./components/Applyleave";
-import Employees from "./components/Employees";
+import Dashemployee from "./components/employee/Dashemployee";
+import Applyleave from "./components/employee/Applyleave";
+import DashHR from "./components/hr/DashHR";
+import Leavestatus from "./components/employee/Leavestatus";
+import LoginHr from "./components/hr/LoginHr";
+import LoginAdmin from "./components/admin/LoginAdmin";
+import DashAdmin from "./components/admin/DashAdmin";
 
 function App() {
 
@@ -12,11 +16,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Login />}></Route>
-      <Route exact path="/dashboard" element={<DashEmployee />}></Route>
+          <Route path="/dashboard" element={<Dashemployee/>}></Route>
 
-          <Route path="register" element={<Register/>}></Route>
+          <Route path="/loginhr" element={<LoginHr/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
+          <Route path="/loginadmin" element={<LoginAdmin/>}></Route>
+          <Route path="/dashhr" element={<DashHR/>}></Route>
+          <Route path="/dashboardadmin" element={<DashAdmin/>}></Route>
+
+
+
           <Route path="/applyleave" element={<Applyleave/>}></Route>
-     <Route path="/employees" element={<Employees/>}></Route>
+          <Route path="/leavestatus" element={<Leavestatus/>}></Route>
         </Routes>
       </BrowserRouter>
       ,
