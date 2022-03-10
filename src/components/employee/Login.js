@@ -14,19 +14,8 @@ export default function Login() {
   const handleLogin = (event) => {
     event.preventDefault()
     setisLogin(true)
-    try {
-      user = logger.login({
-       email, password,
-      })
-      setUser(user)
-      setEmail('')
-      setPassword('')
-    } catch (exception) {
-      setErrorMessage('Wrong credentials')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
-    }
+    setUser(1)
+    setErrorMessage("No")
     console.log(ErrorMessage)
     console.log(user)
     console.log(logger.login)

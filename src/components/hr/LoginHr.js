@@ -11,26 +11,14 @@ export default function LoginHr() {
   const [ErrorMessage, setErrorMessage] = useState(null);
 
   const handleLogin = (event) => {
-    event.preventDefault();
-    setisLogin(true);
-    try {
-      user = logger.login({
-        email,
-        password,
-      });
-      setUser(user);
-      setEmail("");
-      setPassword("");
-    } catch (exception) {
-      setErrorMessage("Wrong credentials");
-      setTimeout(() => {
-        setErrorMessage(null);
-      }, 5000);
-    }
-    console.log(ErrorMessage);
-    console.log(user);
-    console.log(logger.login);
-    console.log("logging in with", email, password);
+    event.preventDefault()
+    setisLogin(true)
+    setUser(1)
+    setErrorMessage("No")
+    console.log(ErrorMessage)
+    console.log(user)
+    console.log(logger.login)
+    console.log('logging in with', email, password)
   };
 
   if (isLogin) {
