@@ -1,8 +1,32 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import AuthService from "./AuthService";
 
 export default function Applyleave() {
   const [show, setShow] = useState(false);
+  const [leave, setLeave]= useState('L');
+  const [application, setApplication]= useState("")
+  const [applied, setApplied]= useState(false)
+  const user= AuthService.getCurrentUser()
+  const ID= user.id
+  const ApplyLeave = (event) => {
+    event.preventDefault()
+    AuthService.applyleave(ID, leave,application).then(
+      ()=>{
+        setApplied(true)
+        console.log("Applied")
+      },
+
+      error => {
+        console.log("Error Occured")
+      }
+    )
+  }
+ 
+  if(applied){
+    console.log("Applied")
+  }
+  
   return (
     <>
       <div className="absolute bg-gray-200 w-full h-full">
@@ -52,7 +76,7 @@ export default function Applyleave() {
                   </div>
                 </div>
                 <ul className="f-m-m">
-                  <Link to='#_'>
+                  <Link to="#_">
                     <li className="text-white pt-8">
                       <div className="flex items-center">
                         <p className="text-indigo-500 ml-3 text-lg">
@@ -65,7 +89,7 @@ export default function Applyleave() {
                     <li className="text-gray-800 pt-4">
                       <div className="flex items-center">
                         <p className="text-gray-800 ml-3 text-lg">
-                          Apply leave 
+                          Apply leave
                         </p>
                       </div>
                     </li>
@@ -89,9 +113,7 @@ export default function Applyleave() {
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li className="cursor-pointer h-full flex items-center text-sm text-gry-800 mx-10 tracking-normal">
-                <Link to="/applyleave">
-                          Apply leave 
-                          </Link>
+                  <Link to="/applyleave">Apply leave</Link>
                 </li>
               </ul>
             </div>
@@ -119,177 +141,9 @@ export default function Applyleave() {
           </div>
         </nav>
         <div className="container mx-auto px-6">
-       
-        <div className="py-2 overflow-x-auto ">
-      
-        <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
-          <table className="min-w-full">
-            <thead>
-              <tr>
-                <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">ApplicatonID</th>
-                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Fullname</th>
-                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
-                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Status</th>
-                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Applied at</th>
-                <th className="px-6 py-3 border-b-2 border-gray-300" />
-              </tr>
-            </thead>
-            <tbody className="bg-white">
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm leading-5 text-gray-800">#1</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td> 
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full" />
-                    <span className="relative text-xs">active</span>
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                  <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm leading-5 text-gray-800">1</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full" />
-                    <span className="relative text-xs">active</span>
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                  <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm leading-5 text-gray-800">#1</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-              
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-red-200 opacity-50 rounded-full" />
-                    <span className="relative text-xs">not active</span>
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                  <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm leading-5 text-gray-800">#1</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td> 
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full" />
-                    <span className="relative text-xs">active</span>
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                  <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm leading-5 text-gray-800">1</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full" />
-                    <span className="relative text-xs">active</span>
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                  <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm leading-5 text-gray-800">#1</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                  <div className="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">damilareanjorin1@gmail.com</td>
-              
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                  <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                    <span aria-hidden className="absolute inset-0 bg-red-200 opacity-50 rounded-full" />
-                    <span className="relative text-xs">not active</span>
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">September 12</td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                  <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
-                </td>
-              </tr>
-            
-            </tbody>
-          </table>
-          
-        </div>
-      </div>
-        
-     
-
-
-
-
-        <div className="w-full h rounded">
+          <div className="w-full h rounded">
             <div className="mt-5 md:mt-0 md:col-span-2">
-              <form action="#" method="POST">
+              <form onSubmit={ApplyLeave}>
                 <div className="overflow-hidden">
                   <div className="px-4 py-5">
                     <div className="grid grid-cols-6 gap-6">
@@ -302,37 +156,42 @@ export default function Applyleave() {
                         </label>
                         <select
                           id="Leave"
-                          name="Leave"
-                          autoComplete="Leave-name"
+                          value={leave}
+                          onChange={({ target }) =>setLeave(target.value)}
                           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
-                          <option>Sick Leave</option>
-                          <option>Maternity Leave</option>
-                          <option>Casual Leave</option>
+                          <option value={'L'}>Leisure Leave</option>
+                          <option value={'H'}>Health Leave</option>
+                          <option value={'M'}>Maternity Leave</option>
                         </select>
                       </div>
 
-                      <div className="col-span-6 sm:col-span-3">
+                      {/* <div className="col-span-6 sm:col-span-3">
                         <label
                           htmlFor="From"
                           className="block text-sm font-medium text-gray-700"
                         >
-                         From 
+                          From
                         </label>
-                       <input type="date" className='w-full py-2 px-3 border border-gray-300 bg-white rounded-md'/>
-                     
+                        <input
+                          type="date"
+                          className="w-full py-2 px-3 border border-gray-300 bg-white rounded-md"
+                        />
                       </div>
                       <div className="col-span-6 sm:col-span-3">
                         <label
                           htmlFor="To"
                           className="block text-sm font-medium text-gray-700"
                         >
-                         To
+                          To
                         </label>
-                        <input type="date" className='w-full py-2 px-3 border border-gray-300 bg-white rounded-md'/>
-                     
-                      
-                      </div>
+                        <input
+                          type="date"
+                          className="w-full py-2 px-3 border border-gray-300 bg-white rounded-md"
+                        />
+                      </div> */}
+
+
                       <div className="col-span-6">
                         <label
                           htmlFor="application"
@@ -343,10 +202,9 @@ export default function Applyleave() {
                         <textarea
                           type="text"
                           name="application"
-                          id="application"
-                          autoComplete="application"
+                          value={application}
+                          onChange={({ target }) =>setApplication(target.value)}
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border p-2 rounded-md h-64 focus:outline-none"
-                          defaultValue={" "}
                         />
                       </div>
                     </div>
@@ -356,17 +214,15 @@ export default function Applyleave() {
                       type="submit"
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                  Apply
+                      Apply
                     </button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-        
         </div>
       </div>
-      
     </>
-  )
+  );
 }

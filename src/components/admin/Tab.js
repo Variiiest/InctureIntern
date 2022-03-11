@@ -11,14 +11,10 @@ const Tab = () => {
                         <polyline points="16 15 12 19 8 15" />
                     </svg>
                 </div>
-                <select aria-label="Selected tab" className="form-select block w-full p-3 border border-gray-300 rounded text-gray-600 appearance-none bg-transparent relative z-10">
-                    <option className="text-sm text-gray-600">inactive </option>
-                    <option className="text-sm text-gray-600">inactive </option>
-                    <option selected className="text-sm text-gray-600">
-                        Active{" "}
-                    </option>
-                    <option className="text-sm text-gray-600">inactive </option>
-                    <option className="text-sm text-gray-600">inactive </option>
+                <select aria-label="Selected tab" value={0} className="form-select block w-full p-3 border border-gray-300 rounded text-gray-600 appearance-none bg-transparent relative z-10">
+                    <option className="text-sm text-gray-600">Active </option>
+                    <option className="text-sm text-gray-600">Inactive </option>
+                
                 </select>
             </div>
             <div className="xl:w-full xl:px-12 h-12 hidden sm:block bg-white shadow rounded">

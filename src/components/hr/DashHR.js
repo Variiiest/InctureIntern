@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import Application from "./Application";
+import Hrservice from "./Hrservice";
 import Tab from "./Tab";
+
 export default function DashHR() {
     const [show, setShow] = useState(null);
+    const [data, setData]= useState([])
+    Hrservice.leavehr().then(
+        (a)=> {
+            setData(a)
+        }
+      )
     return (
         <>
             <div className="bg-gray-200 h-full w-full">
@@ -12,9 +20,9 @@ export default function DashHR() {
                         <div className="flex items-center">
                             <div className="mr-10 flex items-center">
                             
-                                <h3 className="text-base text-white font-bold tracking-normal leading-tight ml-3 hidden lg:block">Dashboard HR</h3>
+                                <h3 className="text-base text-white font-bold tracking-normal leading-tight ml-3 hidden lg:block">Admin Dashboard</h3>
                             </div>
-              
+                    
                         </div>
                      
                     </div>
@@ -49,7 +57,7 @@ export default function DashHR() {
                                             <div className="flex items-center justify-between w-full">
                                                 <div className="flex items-center">
                                                   
-                                                    <p className="text-base  text-white ml-3">HR</p>
+                                                    <p className="text-base  text-white ml-3">Admin </p>
                                                 </div>
                                                 <div id="cross" className="text-white" onClick={() => setShow(!show)}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -71,7 +79,7 @@ export default function DashHR() {
                <div>
                  
                 <Tab/>
-                 <Application/>
+                 <Application data={data}/>
                </div>
             </div>
         </>

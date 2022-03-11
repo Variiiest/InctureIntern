@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {  Navigate } from "react-router-dom"; 
-import logger from "../services";
+import AuthService from "./AuthService";
 
 export default function Login() {
   const [isLogin, setisLogin]= useState(false);
-
   const [email, setEmail] = useState('') 
   const [password, setPassword] = useState('') 
-  const [user, setUser] = useState(null)
   const [ErrorMessage, setErrorMessage] = useState(null)
 
   const handleLogin = (event) => {
     event.preventDefault()
-    setisLogin(true)
-    setUser(1)
     setErrorMessage("No")
+    AuthService.login(email,password).then(
+      ()=>{
+        setisLogin(true)
+      },
+
+      error => {
+        setErrorMessage("Error")
+      }
+    )
+
     console.log(ErrorMessage)
-    console.log(user)
-    console.log(logger.login)
+
     console.log('logging in with', email, password)
   }
 

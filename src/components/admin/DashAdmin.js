@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import Application from "./Application";
+import LeaveService from "./LeaveService";
 import Tab from "./Tab";
+
 export default function DashAdmin() {
     const [show, setShow] = useState(null);
+    const [data, setData]= useState([])
+    LeaveService.leavemanager().then(
+        (a)=> {
+            setData(a)
+        }
+      )
     return (
         <>
             <div className="bg-gray-200 h-full w-full">
@@ -71,7 +79,7 @@ export default function DashAdmin() {
                <div>
                  
                 <Tab/>
-                 <Application/>
+                 <Application data={data}/>
                </div>
             </div>
         </>

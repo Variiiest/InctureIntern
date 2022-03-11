@@ -1,7 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React , {useState} from "react";
+import { Link, Navigate } from "react-router-dom";
+import AuthService from "./AuthService";
 export default function Register() {
+  const [iscreated, setisCreated]= useState(false);
+
+  const [email, setEmail] = useState('') 
+  const [password, setPassword] = useState('') 
+  const [name, setName] = useState('') 
+
+  const [user, setUser] = useState(null)
+  const [ErrorMessage, setErrorMessage] = useState(null)
+
+  const handleRegister = (event) => {
+    event.preventDefault()
+    setUser(1)
+    console.log(ErrorMessage)
+    console.log(name, password, email)
+    AuthService.register(name,email,password).then(
+      ()=>{
+        setisCreated(true)
+      },
+
+      error => {
+        setErrorMessage("Error")
+      }
+    )
+
+    console.log(user)
+  }
+
+  if (iscreated) {
+    return <Navigate to="/" />
+  }
   return (
     <div>
       <section className="flex flex-col md:flex-row text-gray-900 items-center">
@@ -17,12 +47,24 @@ export default function Register() {
             <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
             Create account 
             </h1>
-            <form className="mt-6" action="#_" method="POST">
+            <form className="mt-6" onSubmit={handleRegister}>
               <div>
                 <label className="block text-gray-700">Email Address</label>
                 <input
                   type="email"
                   placeholder="Enter Email Address"
+                  value={email}
+                  onChange={({ target }) =>setEmail(target.value)}
+                  className="w-full py-3 bg-white mt-2 border-b focus:border-blue-700 focus:outline-none"
+                />
+              </div>
+              <div className="mt-4">
+                <label className="block text-gray-700">Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter Name"
+                  value={name}
+                  onChange={({ target }) =>setName(target.value)}
                   className="w-full py-3 bg-white mt-2 border-b focus:border-blue-700 focus:outline-none"
                 />
               </div>
@@ -32,6 +74,8 @@ export default function Register() {
                   type="password"
                   placeholder="Enter Password"
                   minLength={6}
+                  value={password}
+                  onChange={({ target }) =>setPassword(target.value)}
                   className="w-full py-3 bg-white mt-2 border-b focus:border-blue-700 focus:outline-none"
                   required
                 />
